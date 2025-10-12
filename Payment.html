@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Method</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+
+    .checkout-container {
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .payment-form {
+      background: #141414;
+      padding: 40px;
+      border-radius: 20px;
+      flex: 1;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(255,0,92,0.3);
+    }
+
+    .payment-form h1 {
+      color: #ff005c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Payment Icons */
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .payment-icons img {
+      height: 40px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 5px;
+      background: #1a1a1a;
+    }
+
+    .payment-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #2a2a2a;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px 0;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .tab.active {
+      border-bottom: 3px solid #ff005c;
+      color: #ff005c;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input, select, button {
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(90deg, #ff005c, #ff3369);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 30px;
+      border: none;
+    }
+
+    input[type="submit"]:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff3369, #ff005c);
+    }
+
+    .paypal-btn, .cashapp-btn {
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .paypal-btn {
+      background: #ffc439;
+      color: #000;
+    }
+
+    .paypal-btn:hover {
+      transform: scale(1.05);
+      background: #ffb700;
+    }
+
+    .cashapp-btn {
+      background: #00c244;
+      color: #fff;
+    }
+
+    .cashapp-btn:hover {
+      transform: scale(1.05);
+      background: #00a231;
+    }
+
+    .plan-summary {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 30px;
+      min-width: 280px;
+      border: 1px solid #2a2a2a;
+      height: fit-content;
+      position: sticky;
+      top: 50px;
+    }
+
+    .plan-summary h2 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .plan-summary p {
+      margin: 10px 0 0;
+      color: #bbb;
+      font-size: 1em;
+    }
+
+    .plan-summary ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    .plan-summary li {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 5px;
+      color: #ccc;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-container {
+        flex-direction: column;
+        padding: 30px 10px;
+      }
+      .plan-summary {
+        position: relative;
+        top: 0;
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="checkout-container">
+
+  <!-- Payment Form Section -->
+  <div class="payment-form">
+    <h1>Complete Your Payment</h1>
+
+    <!-- Payment Method Icons -->
+    <div class="payment-icons">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_(2018).svg" alt="Amex" data-target="cardForm">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" data-target="cardForm">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="MasterCard" data-target="cardForm">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" data-target="paypalForm">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Cash_App_logo.svg" alt="Cash App" data-target="cashAppForm">
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-target="cardForm">Credit Card</div>
+      <div class="tab" data-target="paypalForm">PayPal</div>
+      <div class="tab" data-target="cashAppForm">Cash App</div>
+    </div>
+
+    <!-- Credit Card Form -->
+    <form id="cardForm" class="active">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Card Number" required />
+      <input type="text" placeholder="Expiry MM/YY" required />
+      <input type="text" placeholder="CVC" required />
+      <input type="submit" value="Pay Now" />
+    </form>
+
+    <!-- PayPal Form -->
+    <form id="paypalForm">
+      <p style="color:#bbb; text-align:center;">You will be redirected to PayPal to complete the payment.</p>
+      <button class="paypal-btn" type="button" id="paypalPay">Pay with PayPal</button>
+    </form>
+
+    <!-- Cash App Form -->
+    <form id="cashAppForm">
+      <p style="color:#bbb; text-align:center;">You will be redirected to Cash App to complete the payment.</p>
+      <button class="cashapp-btn" type="button" id="cashappPay">Pay with Cash App</button>
+    </form>
+  </div>
+
+  <!-- Plan Summary Section -->
+  <div class="plan-summary">
+    <h2 id="planName">Plan Name</h2>
+    <p id="planPrice">$0.00</p>
+    <ul id="planFeatures"></ul>
+  </div>
+
+</div>
+
+<script>
+  // Load selected plan from localStorage
+  const selectedPlan = JSON.parse(localStorage.getItem('selectedPlan')) || {
+    name: "No Plan Selected",
+    price: "0.00",
+    description: "No features"
+  };
+
+  document.getElementById('planName').innerText = selectedPlan.name;
+  document.getElementById('planPrice').innerText = `$${selectedPlan.price}`;
+
+  const featuresList = document.getElementById('planFeatures');
+  featuresList.innerHTML = "";
+  if(selectedPlan.description){
+    selectedPlan.description.split(", ").forEach(feature => {
+      const li = document.createElement('li');
+      li.innerText = feature;
+      featuresList.appendChild(li);
+    });
+  }
+
+  // Tabs functionality
+  const tabs = document.querySelectorAll('.tab');
+  const forms = document.querySelectorAll('form');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      activateForm(tab.dataset.target);
+    });
+  });
+
+  // Icon click functionality
+  const icons = document.querySelectorAll('.payment-icons img');
+  icons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      activateForm(icon.dataset.target);
+    });
+  });
+
+  function activateForm(targetId) {
+    tabs.forEach(t => t.classList.remove('active'));
+    forms.forEach(f => f.classList.remove('active'));
+
+    document.getElementById(targetId).classList.add('active');
+
+    // Activate tab if matching
+    tabs.forEach(t => {
+      if(t.dataset.target === targetId) t.classList.add('active');
+    });
+  }
+
+  // Mock payment submission
+  document.getElementById('cardForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert(`Thank you for purchasing the ${selectedPlan.name} via Credit Card!`);
+    localStorage.removeItem('selectedPlan');
+    window.location.href = 'index.html';
+  });
+
+  document.getElementById('paypalPay').addEventListener('click', function(){
+    alert(`Redirecting to PayPal for ${selectedPlan.name}...`);
+    localStorage.removeItem('selectedPlan');
+    window.location.href = 'index.html';
+  });
+
+  document.getElementById('cashappPay').addEventListener('click', function(){
+    alert(`Redirecting to Cash App for ${selectedPlan.name}...`);
+    localStorage.removeItem('selectedPlan');
+    window.location.href = 'index.html';
+  });
+</script>
+
+</body>
+</html>
