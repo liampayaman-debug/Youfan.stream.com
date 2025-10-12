@@ -9,7 +9,7 @@ A sleek, modern fan-streaming web app where users can connect with creators, wat
 | File | Description |
 |------|--------------|
 | `index.html` | Landing page for the You Fan Stream website. |
-| `home.html` | Main dashboard showing featured and suggested content. |
+| `Home.html` | Main dashboard showing featured and suggested content. |
 | `Login.html` | Fansly-style login and signup interface with modals. |
 | `Message.html` | Direct messaging interface between fans and creators. |
 | `Plan.html` | Subscription plans (Pro, VIP, Grand) page. |

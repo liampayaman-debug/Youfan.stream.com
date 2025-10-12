@@ -1,0 +1,16 @@
+{
+  "name": "youfan.stream.com",
+  "version": "1.0.0",
+  "description": "A sleek, modern fan-streaming web app where users can connect with creators, watch live content, message other fans, and unlock exclusive features through subscription plans.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "live-server --open=index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
