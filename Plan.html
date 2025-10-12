@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Upgrade Your Experience</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(180deg, rgba(0,0,0,0.6), #0d0d0d), 
+                  url('https://images.unsplash.com/photo-1616353071720-18aa43b1c7b0?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
+      text-align: center;
+      padding: 120px 20px 100px;
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #ccc;
+      max-width: 600px;
+      margin: 10px auto 0;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-top: 70px;
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #ff005c;
+    }
+
+    /* Plans */
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .plan {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 320px;
+      text-align: center;
+      position: relative;
+      transition: 0.4s;
+    }
+
+    .plan:hover {
+      transform: translateY(-6px);
+      border-color: #ff005c;
+      box-shadow: 0 0 25px rgba(255, 0, 92, 0.25);
+    }
+
+    /* VIP Highlight */
+    .plan.vip {
+      border: 2px solid #ff3399;
+      box-shadow: 0 0 25px rgba(255, 51, 153, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Grand Highlight */
+    .plan.grand {
+      border: 2px solid #FFD700;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      transform: scale(1.03);
+    }
+
+    /* Ribbon/Badge */
+    .plan .ribbon {
+      position: absolute;
+      top: 20px;
+      right: -10px;
+      background: linear-gradient(90deg, #ff005c, #ff33a1, #ff66c7);
+      color: #fff;
+      font-size: 0.8em;
+      padding: 6px 18px;
+      border-radius: 4px;
+      font-weight: 600;
+      transform: rotate(15deg);
+      box-shadow: 0 0 15px rgba(255,0,92,0.6);
+      animation: glow 2s infinite alternate;
+    }
+
+    .plan.grand .ribbon {
+      background: linear-gradient(90deg, #FFD700, #FFC107, #FFEA00);
+      color: #000;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      animation: goldGlow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px rgba(255,51,153,0.5); }
+      100% { box-shadow: 0 0 25px rgba(255,51,153,1); }
+    }
+
+    @keyframes goldGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
+      100% { box-shadow: 0 0 35px rgba(255, 215, 0, 1); }
+    }
+
+    .plan h2 {
+      font-size: 1.6em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2em;
+      font-weight: 700;
+      color: #ff005c;
+      margin: 10px 0 20px;
+    }
+
+    .plan.grand .price {
+      color: #FFD700;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      color: #bbb;
+      text-align: left;
+    }
+
+    .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .subscribe-btn {
+      background: linear-gradient(90deg, #ff005c, #ff3369);
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s ease;
+    }
+
+    .plan.grand .subscribe-btn {
+      background: linear-gradient(90deg, #FFD700, #FFC107);
+      color: #000;
+    }
+
+    .subscribe-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75px;
+      width: 50px;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transform: skewX(-25deg);
+      animation: shine 2.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -75px; }
+      50% { left: 125%; }
+      100% { left: 125%; }
+    }
+
+    .subscribe-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff3369, #ff005c);
+    }
+
+    .plan.grand .subscribe-btn:hover {
+      transform: scale(1.08);
+      background: linear-gradient(90deg, #FFD700, #FFEA00);
+    }
+
+    /* Why Upgrade Section */
+    .why-upgrade {
+      text-align: center;
+      padding: 60px 25px;
+      background: #111;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    .why-upgrade h2 {
+      color: #ff005c;
+      margin-bottom: 30px;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .benefit {
+      width: 280px;
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #2a2a2a;
+      transition: 0.3s;
+    }
+
+    .benefit:hover {
+      border-color: #ff005c;
+      box-shadow: 0 0 15px rgba(255, 0, 92, 0.15);
+    }
+
+    .benefit h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .benefit p {
+      color: #bbb;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .testimonial {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #ccc;
+      font-style: italic;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: "“";
+      font-size: 3em;
+      color: #ff005c;
+      position: absolute;
+      left: -10px;
+      top: -20px;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      color: #ff3369;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 10px;
+      border-top: 1px solid #222;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 800px) {
+      .plans {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Unlock Premium Access</h1>
+    <p>Choose the plan that fits your needs and enjoy exclusive content, live streams, and VIP perks.</p>
+  </section>
+
+  <h2 class="section-title">Choose Your Plan</h2>
+  <section class="plans">
+    <div class="plan">
+      <h2>Pro</h2>
+      <div class="price">$79.99</div>
+      <ul class="features">
+        <li>Unlimited access to live streams</li>
+        <li>Chat directly with streamers</li>
+        <li>Exclusive private content</li>
+        <li>Save photos & clips</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribe('pro')">Subscribe Now</button>
+    </div>
+
+    <div class="plan vip">
+      <div class="ribbon">Most Popular</div>
+      <h2>VIP</h2>
+      <div class="price">$99.99</div>
+      <ul class="features">
+        <li>All Pro features</li>
+        <li>Early content access</li>
+        <li>Private 1-on-1 sessions</li>
+        <li>VIP supporter badge</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribe('vip')">Subscribe Now</button>
+    </div>
+
+    <div class="plan grand">
+      <div class="ribbon">Premium Access</div>
+      <h2>Grand</h2>
+      <div class="price">$159.99</div>
+      <ul class="features">
+        <li>All VIP features</li>
+        <li>Exclusive Grand content</li>
+        <li>Priority support & shoutouts</li>
+        <li>Custom perks for top fans</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribe('grand')">Subscribe Now</button>
+    </div>
+  </section>
+
+  <section class="why-upgrade">
+    <h2>Why Upgrade?</h2>
+    <div class="benefits">
+      <div class="benefit">
+        <h3>🔥 Unlock Premium Content</h3>
+        <p>Get full, uncut access to your favorite streamers’ live moments and behind-the-scenes clips.</p>
+      </div>
+      <div class="benefit">
+        <h3>💬 Engage in Real Time</h3>
+        <p>Chat, react, and connect personally during live broadcasts — not just as a viewer, but as part of the community.</p>
+      </div>
+      <div class="benefit">
+        <h3>🎁 Exclusive Rewards</h3>
+        <p>Receive special badges, shout-outs, and VIP recognition from your favorite creators.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="testimonial">
+      “The best platform to connect with streamers. I’ve never felt this close to the people I watch — the upgrade is 100% worth it.”
+      <strong>— Emily, Subscriber</strong>
+    </div>
+
+    <div class="testimonial">
+      “I upgraded to VIP and it changed my experience completely. Worth every penny!”
+      <strong>— Ryan, VIP Member</strong>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 StreamWorld. All Rights Reserved.
+  </footer>
+
+<script>
+  function subscribe(plan) {
+    const plans = {
+      pro: {
+        name: 'Pro',
+        price: '79.99',
+        description: 'Unlimited access to live streams, chat directly with streamers, exclusive private content, save photos & clips'
+      },
+      vip: {
+        name: 'VIP',
+        price: '99.99',
+        description: 'All Pro features, early content access, private 1-on-1 sessions, VIP supporter badge'
+      },
+      grand: {
+        name: 'Grand',
+        price: '159.99',
+        description: 'All VIP features, exclusive Grand content, priority support & shoutouts, custom perks for top fans'
+      }
+    };
+
+    // Save the selected plan to localStorage
+    localStorage.setItem('selectedPlan', JSON.stringify(plans[plan]));
+
+    // Redirect to payment page
+    window.location.href = 'payment.html'; // Make sure payment.html is in the same folder
+  }
+</script>
+
+</body>
+</html>
