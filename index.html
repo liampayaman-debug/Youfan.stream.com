@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="style.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You Fan Stream — Connect with Your Favorite Creators</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: radial-gradient(circle at top, #1d1a25, #0f0f13);
       color: white;
       font-family: system-ui, sans-serif;
       overflow-x: hidden;
     }
+
     .hero {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 140px 20px 80px;
     }
+
     .hero h1 {
       font-size: 3rem;
       font-weight: 800;
@@ -23,32 +31,45 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .hero p {
-      max-width: 600px;
+      max-width: 650px;
       margin: 20px auto;
       color: #d1c4e9;
+      font-size: 1.125rem;
+      line-height: 1.6;
     }
+
     .btn {
       display: inline-block;
       background: linear-gradient(90deg, #6b21a8, #9f5cff);
+      background-size: 200% 200%;
       color: #fff;
-      padding: 14px 30px;
+      padding: 14px 32px;
       border-radius: 30px;
       font-weight: 600;
       margin: 10px;
       box-shadow: 0 4px 20px rgba(155, 94, 255, 0.3);
-      transition: 0.3s;
+      transition: 0.5s;
     }
+
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 30px rgba(155, 94, 255, 0.4);
+      background-position: right center;
     }
+
+    section.card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(155, 94, 255, 0.3);
+    }
+
     footer {
       text-align: center;
-      padding: 40px 10px;
+      padding: 60px 10px;
       color: #aaa;
       border-top: 1px solid #2a1a4a;
-      margin-top: 60px;
+      margin-top: 80px;
     }
   </style>
 </head>
@@ -57,15 +78,10 @@
   <nav class="w-full bg-[#1d1b21] border-b border-[#2c2a2f] fixed top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
       <a href="#" class="flex items-center space-x-3">
-        <img src="Youfanlogo.png" alt="Logo" class="w-10 h-10 rounded-full shadow-lg object-cover">
+        <img src="assets/Youfanlogo.png" alt="Logo" class="w-12 h-12 rounded-full shadow-lg object-cover">
         <span class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400">You Fan Stream</span>
       </a>
-      <div class="hidden sm:flex space-x-6 text-sm text-gray-300">
-        <a href="home.html" class="hover:text-purple-400">Home</a>
-        <a href="Profile.html" class="hover:text-purple-400">Profile</a>
-        <a href="Message.html" class="hover:text-purple-400">Messages</a>
-        <a href="Plan.html" class="hover:text-purple-400">Plans</a>
-      </div>
+      
       <a href="Login.html" class="px-4 py-2 bg-purple-600 rounded-full font-semibold hover:bg-purple-700 transition">Login</a>
     </div>
   </nav>
@@ -87,15 +103,15 @@
     <p class="text-gray-300 mb-8">Discover new creators, interact live, send messages, and upgrade to premium plans for full access to exclusive content.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-      <div class="p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a]">
+      <div class="card p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a] transition-transform duration-300">
         <h3 class="text-xl font-semibold text-purple-400 mb-2">🎥 Stream & Watch</h3>
         <p>Join interactive live sessions and discover trending creators in real-time.</p>
       </div>
-      <div class="p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a]">
+      <div class="card p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a] transition-transform duration-300">
         <h3 class="text-xl font-semibold text-purple-400 mb-2">💬 Connect</h3>
         <p>Send private messages and engage with creators and other fans.</p>
       </div>
-      <div class="p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a]">
+      <div class="card p-6 bg-[#0f0f13] rounded-2xl border border-[#2a1a4a] transition-transform duration-300">
         <h3 class="text-xl font-semibold text-purple-400 mb-2">💎 Upgrade</h3>
         <p>Subscribe to VIP and Grand plans to unlock premium experiences and rewards.</p>
       </div>
